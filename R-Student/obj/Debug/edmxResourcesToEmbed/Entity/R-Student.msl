@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Open_Subjects">
+      <EntityTypeMapping TypeName="Model.Open_Subjects">
+        <MappingFragment StoreEntitySet="Open_Subjects">
+          <ScalarProperty Name="Teacher_id" ColumnName="Teacher_id" />
+          <ScalarProperty Name="Sub_unit" ColumnName="Sub_unit" />
+          <ScalarProperty Name="Sub_Name" ColumnName="Sub_Name" />
+          <ScalarProperty Name="Sub_id" ColumnName="Sub_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PreName">
+      <EntityTypeMapping TypeName="Model.PreName">
+        <MappingFragment StoreEntitySet="PreName">
+          <ScalarProperty Name="Pre_name" ColumnName="Pre_name" />
+          <ScalarProperty Name="Pre_id" ColumnName="Pre_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProfileStudent">
+      <EntityTypeMapping TypeName="Model.ProfileStudent">
+        <MappingFragment StoreEntitySet="ProfileStudent">
+          <ScalarProperty Name="Faculty" ColumnName="Faculty" />
+          <ScalarProperty Name="Branch" ColumnName="Branch" />
+          <ScalarProperty Name="Group_id" ColumnName="Group_id" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FristName" ColumnName="FristName" />
+          <ScalarProperty Name="Pre_Name" ColumnName="Pre_Name" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="Stud_id" ColumnName="Stud_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProfileTeacher">
+      <EntityTypeMapping TypeName="Model.ProfileTeacher">
+        <MappingFragment StoreEntitySet="ProfileTeacher">
+          <ScalarProperty Name="Faculty" ColumnName="Faculty" />
+          <ScalarProperty Name="Branch" ColumnName="Branch" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FristName" ColumnName="FristName" />
+          <ScalarProperty Name="Pre_Name" ColumnName="Pre_Name" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="Teacher_id" ColumnName="Teacher_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Register_Subjects">
+      <EntityTypeMapping TypeName="Model.Register_Subjects">
+        <MappingFragment StoreEntitySet="Register_Subjects">
+          <ScalarProperty Name="Grad" ColumnName="Grad" />
+          <ScalarProperty Name="Sub_id" ColumnName="Sub_id" />
+          <ScalarProperty Name="Stud_id" ColumnName="Stud_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="Model.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Usertype" ColumnName="Usertype" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViewOpenSub">
+      <EntityTypeMapping TypeName="Model.ViewOpenSub">
+        <MappingFragment StoreEntitySet="ViewOpenSub">
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FristName" ColumnName="FristName" />
+          <ScalarProperty Name="Sub_unit" ColumnName="Sub_unit" />
+          <ScalarProperty Name="Sub_Name" ColumnName="Sub_Name" />
+          <ScalarProperty Name="Sub_id" ColumnName="Sub_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViewReport">
+      <EntityTypeMapping TypeName="Model.ViewReport">
+        <MappingFragment StoreEntitySet="ViewReport">
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FristName" ColumnName="FristName" />
+          <ScalarProperty Name="Grad" ColumnName="Grad" />
+          <ScalarProperty Name="Teacher_id" ColumnName="Teacher_id" />
+          <ScalarProperty Name="Sub_unit" ColumnName="Sub_unit" />
+          <ScalarProperty Name="Sub_Name" ColumnName="Sub_Name" />
+          <ScalarProperty Name="Sub_id" ColumnName="Sub_id" />
+          <ScalarProperty Name="Stud_id" ColumnName="Stud_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViewStud">
+      <EntityTypeMapping TypeName="Model.ViewStud">
+        <MappingFragment StoreEntitySet="ViewStud">
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="Faculty" ColumnName="Faculty" />
+          <ScalarProperty Name="Branch" ColumnName="Branch" />
+          <ScalarProperty Name="Group_id" ColumnName="Group_id" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FristName" ColumnName="FristName" />
+          <ScalarProperty Name="Pre_Name" ColumnName="Pre_Name" />
+          <ScalarProperty Name="Stud_id" ColumnName="Stud_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViewTeacher">
+      <EntityTypeMapping TypeName="Model.ViewTeacher">
+        <MappingFragment StoreEntitySet="ViewTeacher">
+          <ScalarProperty Name="Pre_name" ColumnName="Pre_name" />
+          <ScalarProperty Name="Faculty" ColumnName="Faculty" />
+          <ScalarProperty Name="Branch" ColumnName="Branch" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FristName" ColumnName="FristName" />
+          <ScalarProperty Name="Teacher_id" ColumnName="Teacher_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

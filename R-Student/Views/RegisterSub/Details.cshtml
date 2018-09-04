@@ -1,0 +1,52 @@
+﻿@model R_Student.Entity.Open_Subjects
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout _User.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Open_Subjects</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sub_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sub_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sub_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sub_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sub_unit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sub_unit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Teacher_id)
+        </dt>
+
+        <dd>
+            @Model.ProfileTeacher.FristName @Model.ProfileTeacher.LastName
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("ลงทะเบียน", "Register") |
+    @Html.ActionLink("Back to List", "SubList")
+</p>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<R_Student.Entity.Register_Subjects>
+
+@{
+    ViewBag.Title = "Grad";
+    Layout = "~/Views/Shared/_Layout _User.cshtml";
+}
+
+<h2>Grad</h2>
+
+<p>@Html.ActionLink("Report", "WebForm2.aspx", "Report")</p>
+<table class="table">
+    <tr>
+        <th>
+            รหัสวิชา
+        </th>
+        <th>
+            ชื่อวิชา
+        </th>
+        <th>
+            หน่วนกิต
+        </th>
+        <th>
+            เกรด
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sub_id)
+        </td>
+        <td>
+            @item.Open_Subjects.Sub_Name
+        </td>
+        <td>
+            @item.Open_Subjects.Sub_unit
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Grad)
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("R-Student", "Index", "User", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    
+                </ul>
+            @if (Session["USER"] != null)
+            {
+                R_Student.Entity.User user = (R_Student.Entity.User)Session["USER"];
+                R_Student.Entity.ProfileStudent stud = (R_Student.Entity.ProfileStudent)Session["Stud"];
+                R_Student.Entity.ProfileTeacher teacher = (R_Student.Entity.ProfileTeacher)Session["Teacher"];
+                int id = user.User_id;
+                if (user.Usertype == 1)
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <img src="~/@(user.Image)" width="35" alt="IMAGES">&nbsp; @user.Name<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+
+                                <li><a href="@Url.Action("EditeUser", "User")">แก้ไขข้อมูลผู้ใช้</a></li>
+                                <li><a href="@Url.Action("Logout", "User")">ออกระบบ</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>@Html.ActionLink("จัดการบัญชีผู้ใช้", "UserList", "User")</li>
+                            <li>@Html.ActionLink("จัดการนักศึกษา", "StudentList", "Student")</li>
+                            <li>@Html.ActionLink("จัดการอาจารย์", "TeacherList", "Teacher")</li>
+                        </ul>
+                }
+                if (user.Usertype == 2)
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <img src="~/@(user.Image)" width="35" alt="IMAGES">&nbsp;@user.Name<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                @if (teacher == null)
+                                {
+                                    <li><a href="@Url.Action("Create", "Teacher")">เพิ่มประวัติอาจารย์</a></li>
+                                    <li><a href="@Url.Action("EditeUser", "User")">แก้ไขข้อมูลผู้ใช้</a></li>
+                                    <li><a href="@Url.Action("Logout", "User")">ออกระบบ</a></li>
+                                }
+                                else
+                                {
+                                    if (teacher.User_id == id)
+                                    {
+                                        <li><a href="@Url.Action("TeacherHistory", "Teacher")">ประวัติอาจารย์</a></li>
+                                        <li><a href="@Url.Action("EditeUser", "User")">แก้ไขข้อมูลผู้ใช้</a></li>
+                                        <li><a href="@Url.Action("Logout", "User")">ออกระบบ</a></li>
+                                    }
+                                }
+
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>@Html.ActionLink("ClassRoom", "Subject", "RegisterSub")</li>
+                        <li>@Html.ActionLink("รายชื่อนักศึกษา", "StudentList", "Student")</li>
+                        <li>@Html.ActionLink("เปิดวิชาเรียน", "Create", "OpenSub")</li>
+                    </ul>
+                }
+                if (user.Usertype == 3)
+                {
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    <img src="~/@(user.Image)" width="35" alt="IMAGES">&nbsp; @user.Name<span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    @if(stud == null)
+                                    {
+                                        <li><a href="@Url.Action("Create", "Student")">เพิ่มประวัตินักศึกษา</a></li>
+                                        <li><a href="@Url.Action("EditeUser", "User")">แก้ไขข้อมูลผู้ใช้</a></li>
+                                        <li><a href="@Url.Action("Logout", "User")">ออกระบบ</a></li>
+                                    }
+                                    else
+                                    {
+                                        if (stud.User_id == id)
+                                        {
+                                            <li><a href="@Url.Action("StudHistory", "Student")">ประวัตินักศึกษา</a></li>
+                                            <li><a href="@Url.Action("EditeUser", "User")">แก้ไขข้อมูลผู้ใช้</a></li>
+                                            <li><a href="@Url.Action("Logout", "User")">ออกระบบ</a></li>
+                                        }
+                                    }
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>@Html.ActionLink("ผลการเรียน", "Grad", "RegisterSub")</li>
+                            <li>@Html.ActionLink("ค้นหาอาจารย์", "TeacherList", "Teacher")</li>
+                            <li>@Html.ActionLink("ลงทะเบียนเรียน", "SubList", "RegisterSub")</li>
+                        </ul>
+                }
+            }
+            else
+            {
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("เข้าสู่ระบบ", "Login", "User")</li>
+                    </ul>
+                    <script>
+                        window.location.href = "@Url.Action("Login", "User")";
+                    </script>
+                }
+
+            </div>
+
+           
+
+
+
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

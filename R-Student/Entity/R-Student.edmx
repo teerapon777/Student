@@ -1,0 +1,688 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Open_Subjects">
+          <Key>
+            <PropertyRef Name="Sub_id" />
+          </Key>
+          <Property Name="Sub_id" Type="int" Nullable="false" />
+          <Property Name="Sub_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Sub_unit" Type="int" />
+          <Property Name="Teacher_id" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="PreName">
+          <Key>
+            <PropertyRef Name="Pre_id" />
+          </Key>
+          <Property Name="Pre_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pre_name" Type="varchar" MaxLength="7" />
+        </EntityType>
+        <EntityType Name="ProfileStudent">
+          <Key>
+            <PropertyRef Name="Stud_id" />
+          </Key>
+          <Property Name="Stud_id" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="User_id" Type="int" />
+          <Property Name="Pre_Name" Type="int" />
+          <Property Name="FristName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Group_id" Type="varchar" MaxLength="9" />
+          <Property Name="Branch" Type="varchar" MaxLength="50" />
+          <Property Name="Faculty" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProfileTeacher">
+          <Key>
+            <PropertyRef Name="Teacher_id" />
+          </Key>
+          <Property Name="Teacher_id" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="User_id" Type="int" />
+          <Property Name="Pre_Name" Type="int" />
+          <Property Name="FristName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Branch" Type="varchar" MaxLength="50" />
+          <Property Name="Faculty" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Register_Subjects">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Stud_id" Type="varchar" MaxLength="11" />
+          <Property Name="Sub_id" Type="int" />
+          <Property Name="Grad" Type="char" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_id" />
+          </Key>
+          <Property Name="User_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="20" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
+          <Property Name="Name" Type="varchar" MaxLength="30" />
+          <Property Name="Image" Type="text" />
+          <Property Name="Usertype" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'R-Student.dbo.ViewOpenSub' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewOpenSub">
+          <Key>
+            <PropertyRef Name="Sub_id" />
+          </Key>
+          <Property Name="Sub_id" Type="int" Nullable="false" />
+          <Property Name="Sub_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Sub_unit" Type="int" />
+          <Property Name="FristName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'R-Student.dbo.ViewReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewReport">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Stud_id" Type="varchar" MaxLength="11" />
+          <Property Name="Sub_id" Type="int" />
+          <Property Name="Sub_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Sub_unit" Type="int" />
+          <Property Name="Teacher_id" Type="varchar" MaxLength="15" />
+          <Property Name="Grad" Type="char" MaxLength="2" />
+          <Property Name="FristName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'R-Student.dbo.ViewStud' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewStud">
+          <Key>
+            <PropertyRef Name="Stud_id" />
+          </Key>
+          <Property Name="Stud_id" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="Pre_Name" Type="int" />
+          <Property Name="FristName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Group_id" Type="varchar" MaxLength="9" />
+          <Property Name="Branch" Type="varchar" MaxLength="50" />
+          <Property Name="Faculty" Type="varchar" MaxLength="50" />
+          <Property Name="Expr1" Type="varchar" MaxLength="7" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'R-Student.dbo.ViewTeacher' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewTeacher">
+          <Key>
+            <PropertyRef Name="Teacher_id" />
+          </Key>
+          <Property Name="Teacher_id" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="FristName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Branch" Type="varchar" MaxLength="50" />
+          <Property Name="Faculty" Type="varchar" MaxLength="50" />
+          <Property Name="Pre_name" Type="varchar" MaxLength="7" />
+        </EntityType>
+        <Association Name="FK_Open_Subjects_Open_Subjects">
+          <End Role="ProfileTeacher" Type="Self.ProfileTeacher" Multiplicity="0..1" />
+          <End Role="Open_Subjects" Type="Self.Open_Subjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProfileTeacher">
+              <PropertyRef Name="Teacher_id" />
+            </Principal>
+            <Dependent Role="Open_Subjects">
+              <PropertyRef Name="Teacher_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileStudent_PreName">
+          <End Role="PreName" Type="Self.PreName" Multiplicity="0..1" />
+          <End Role="ProfileStudent" Type="Self.ProfileStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreName">
+              <PropertyRef Name="Pre_id" />
+            </Principal>
+            <Dependent Role="ProfileStudent">
+              <PropertyRef Name="Pre_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileStudent_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="ProfileStudent" Type="Self.ProfileStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="ProfileStudent">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileTeacher_PreName">
+          <End Role="PreName" Type="Self.PreName" Multiplicity="0..1" />
+          <End Role="ProfileTeacher" Type="Self.ProfileTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreName">
+              <PropertyRef Name="Pre_id" />
+            </Principal>
+            <Dependent Role="ProfileTeacher">
+              <PropertyRef Name="Pre_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileTeacher_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="ProfileTeacher" Type="Self.ProfileTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="ProfileTeacher">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Register_Subjects_Open_Subjects">
+          <End Role="Open_Subjects" Type="Self.Open_Subjects" Multiplicity="0..1" />
+          <End Role="Register_Subjects" Type="Self.Register_Subjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Open_Subjects">
+              <PropertyRef Name="Sub_id" />
+            </Principal>
+            <Dependent Role="Register_Subjects">
+              <PropertyRef Name="Sub_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Register_Subjects_Open_Subjects1">
+          <End Role="ProfileStudent" Type="Self.ProfileStudent" Multiplicity="0..1" />
+          <End Role="Register_Subjects" Type="Self.Register_Subjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProfileStudent">
+              <PropertyRef Name="Stud_id" />
+            </Principal>
+            <Dependent Role="Register_Subjects">
+              <PropertyRef Name="Stud_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Open_Subjects" EntityType="Self.Open_Subjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PreName" EntityType="Self.PreName" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProfileStudent" EntityType="Self.ProfileStudent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProfileTeacher" EntityType="Self.ProfileTeacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Register_Subjects" EntityType="Self.Register_Subjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ViewOpenSub" EntityType="Self.ViewOpenSub" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewOpenSub].[Sub_id] AS [Sub_id], 
+    [ViewOpenSub].[Sub_Name] AS [Sub_Name], 
+    [ViewOpenSub].[Sub_unit] AS [Sub_unit], 
+    [ViewOpenSub].[FristName] AS [FristName], 
+    [ViewOpenSub].[LastName] AS [LastName]
+    FROM [dbo].[ViewOpenSub] AS [ViewOpenSub]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewReport" EntityType="Self.ViewReport" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewReport].[id] AS [id], 
+    [ViewReport].[Stud_id] AS [Stud_id], 
+    [ViewReport].[Sub_id] AS [Sub_id], 
+    [ViewReport].[Sub_Name] AS [Sub_Name], 
+    [ViewReport].[Sub_unit] AS [Sub_unit], 
+    [ViewReport].[Teacher_id] AS [Teacher_id], 
+    [ViewReport].[Grad] AS [Grad], 
+    [ViewReport].[FristName] AS [FristName], 
+    [ViewReport].[LastName] AS [LastName]
+    FROM [dbo].[ViewReport] AS [ViewReport]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewStud" EntityType="Self.ViewStud" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewStud].[Stud_id] AS [Stud_id], 
+    [ViewStud].[Pre_Name] AS [Pre_Name], 
+    [ViewStud].[FristName] AS [FristName], 
+    [ViewStud].[LastName] AS [LastName], 
+    [ViewStud].[Group_id] AS [Group_id], 
+    [ViewStud].[Branch] AS [Branch], 
+    [ViewStud].[Faculty] AS [Faculty], 
+    [ViewStud].[Expr1] AS [Expr1]
+    FROM [dbo].[ViewStud] AS [ViewStud]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewTeacher" EntityType="Self.ViewTeacher" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewTeacher].[Teacher_id] AS [Teacher_id], 
+    [ViewTeacher].[FristName] AS [FristName], 
+    [ViewTeacher].[LastName] AS [LastName], 
+    [ViewTeacher].[Branch] AS [Branch], 
+    [ViewTeacher].[Faculty] AS [Faculty], 
+    [ViewTeacher].[Pre_name] AS [Pre_name]
+    FROM [dbo].[ViewTeacher] AS [ViewTeacher]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Open_Subjects_Open_Subjects" Association="Self.FK_Open_Subjects_Open_Subjects">
+            <End Role="ProfileTeacher" EntitySet="ProfileTeacher" />
+            <End Role="Open_Subjects" EntitySet="Open_Subjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileStudent_PreName" Association="Self.FK_ProfileStudent_PreName">
+            <End Role="PreName" EntitySet="PreName" />
+            <End Role="ProfileStudent" EntitySet="ProfileStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileStudent_User" Association="Self.FK_ProfileStudent_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="ProfileStudent" EntitySet="ProfileStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileTeacher_PreName" Association="Self.FK_ProfileTeacher_PreName">
+            <End Role="PreName" EntitySet="PreName" />
+            <End Role="ProfileTeacher" EntitySet="ProfileTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileTeacher_User" Association="Self.FK_ProfileTeacher_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="ProfileTeacher" EntitySet="ProfileTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Register_Subjects_Open_Subjects" Association="Self.FK_Register_Subjects_Open_Subjects">
+            <End Role="Open_Subjects" EntitySet="Open_Subjects" />
+            <End Role="Register_Subjects" EntitySet="Register_Subjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Register_Subjects_Open_Subjects1" Association="Self.FK_Register_Subjects_Open_Subjects1">
+            <End Role="ProfileStudent" EntitySet="ProfileStudent" />
+            <End Role="Register_Subjects" EntitySet="Register_Subjects" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Open_Subjects" EntityType="Model.Open_Subjects" />
+          <EntitySet Name="PreName" EntityType="Model.PreName" />
+          <EntitySet Name="ProfileStudent" EntityType="Model.ProfileStudent" />
+          <EntitySet Name="ProfileTeacher" EntityType="Model.ProfileTeacher" />
+          <EntitySet Name="Register_Subjects" EntityType="Model.Register_Subjects" />
+          <EntitySet Name="User" EntityType="Model.User" />
+          <EntitySet Name="ViewOpenSub" EntityType="Model.ViewOpenSub" />
+          <EntitySet Name="ViewReport" EntityType="Model.ViewReport" />
+          <EntitySet Name="ViewStud" EntityType="Model.ViewStud" />
+          <EntitySet Name="ViewTeacher" EntityType="Model.ViewTeacher" />
+          <AssociationSet Name="FK_Open_Subjects_Open_Subjects" Association="Model.FK_Open_Subjects_Open_Subjects">
+            <End Role="ProfileTeacher" EntitySet="ProfileTeacher" />
+            <End Role="Open_Subjects" EntitySet="Open_Subjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Register_Subjects_Open_Subjects" Association="Model.FK_Register_Subjects_Open_Subjects">
+            <End Role="Open_Subjects" EntitySet="Open_Subjects" />
+            <End Role="Register_Subjects" EntitySet="Register_Subjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileStudent_PreName" Association="Model.FK_ProfileStudent_PreName">
+            <End Role="PreName" EntitySet="PreName" />
+            <End Role="ProfileStudent" EntitySet="ProfileStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileTeacher_PreName" Association="Model.FK_ProfileTeacher_PreName">
+            <End Role="PreName" EntitySet="PreName" />
+            <End Role="ProfileTeacher" EntitySet="ProfileTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileStudent_User" Association="Model.FK_ProfileStudent_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="ProfileStudent" EntitySet="ProfileStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Register_Subjects_Open_Subjects1" Association="Model.FK_Register_Subjects_Open_Subjects1">
+            <End Role="ProfileStudent" EntitySet="ProfileStudent" />
+            <End Role="Register_Subjects" EntitySet="Register_Subjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileTeacher_User" Association="Model.FK_ProfileTeacher_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="ProfileTeacher" EntitySet="ProfileTeacher" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Open_Subjects">
+          <Key>
+            <PropertyRef Name="Sub_id" />
+          </Key>
+          <Property Name="Sub_id" Type="Int32" Nullable="false" />
+          <Property Name="Sub_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_unit" Type="Int32" />
+          <Property Name="Teacher_id" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProfileTeacher" Relationship="Model.FK_Open_Subjects_Open_Subjects" FromRole="Open_Subjects" ToRole="ProfileTeacher" />
+          <NavigationProperty Name="Register_Subjects" Relationship="Model.FK_Register_Subjects_Open_Subjects" FromRole="Open_Subjects" ToRole="Register_Subjects" />
+        </EntityType>
+        <EntityType Name="PreName">
+          <Key>
+            <PropertyRef Name="Pre_id" />
+          </Key>
+          <Property Name="Pre_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pre_name" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProfileStudent" Relationship="Model.FK_ProfileStudent_PreName" FromRole="PreName" ToRole="ProfileStudent" />
+          <NavigationProperty Name="ProfileTeacher" Relationship="Model.FK_ProfileTeacher_PreName" FromRole="PreName" ToRole="ProfileTeacher" />
+        </EntityType>
+        <EntityType Name="ProfileStudent">
+          <Key>
+            <PropertyRef Name="Stud_id" />
+          </Key>
+          <Property Name="Stud_id" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="User_id" Type="Int32" />
+          <Property Name="Pre_Name" Type="Int32" />
+          <Property Name="FristName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Group_id" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Faculty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PreName" Relationship="Model.FK_ProfileStudent_PreName" FromRole="ProfileStudent" ToRole="PreName" />
+          <NavigationProperty Name="User" Relationship="Model.FK_ProfileStudent_User" FromRole="ProfileStudent" ToRole="User" />
+          <NavigationProperty Name="Register_Subjects" Relationship="Model.FK_Register_Subjects_Open_Subjects1" FromRole="ProfileStudent" ToRole="Register_Subjects" />
+        </EntityType>
+        <EntityType Name="ProfileTeacher">
+          <Key>
+            <PropertyRef Name="Teacher_id" />
+          </Key>
+          <Property Name="Teacher_id" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="User_id" Type="Int32" />
+          <Property Name="Pre_Name" Type="Int32" />
+          <Property Name="FristName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Faculty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Open_Subjects" Relationship="Model.FK_Open_Subjects_Open_Subjects" FromRole="ProfileTeacher" ToRole="Open_Subjects" />
+          <NavigationProperty Name="PreName" Relationship="Model.FK_ProfileTeacher_PreName" FromRole="ProfileTeacher" ToRole="PreName" />
+          <NavigationProperty Name="User" Relationship="Model.FK_ProfileTeacher_User" FromRole="ProfileTeacher" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Register_Subjects">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Stud_id" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_id" Type="Int32" />
+          <Property Name="Grad" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Open_Subjects" Relationship="Model.FK_Register_Subjects_Open_Subjects" FromRole="Register_Subjects" ToRole="Open_Subjects" />
+          <NavigationProperty Name="ProfileStudent" Relationship="Model.FK_Register_Subjects_Open_Subjects1" FromRole="Register_Subjects" ToRole="ProfileStudent" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_id" />
+          </Key>
+          <Property Name="User_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Usertype" Type="Int32" />
+          <NavigationProperty Name="ProfileStudent" Relationship="Model.FK_ProfileStudent_User" FromRole="User" ToRole="ProfileStudent" />
+          <NavigationProperty Name="ProfileTeacher" Relationship="Model.FK_ProfileTeacher_User" FromRole="User" ToRole="ProfileTeacher" />
+        </EntityType>
+        <EntityType Name="ViewOpenSub">
+          <Key>
+            <PropertyRef Name="Sub_id" />
+          </Key>
+          <Property Name="Sub_id" Type="Int32" Nullable="false" />
+          <Property Name="Sub_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_unit" Type="Int32" />
+          <Property Name="FristName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ViewReport">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Stud_id" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_id" Type="Int32" />
+          <Property Name="Sub_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_unit" Type="Int32" />
+          <Property Name="Teacher_id" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Grad" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="FristName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ViewStud">
+          <Key>
+            <PropertyRef Name="Stud_id" />
+          </Key>
+          <Property Name="Stud_id" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Pre_Name" Type="Int32" />
+          <Property Name="FristName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Group_id" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Faculty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Expr1" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ViewTeacher">
+          <Key>
+            <PropertyRef Name="Teacher_id" />
+          </Key>
+          <Property Name="Teacher_id" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="FristName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Faculty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pre_name" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Open_Subjects_Open_Subjects">
+          <End Type="Model.ProfileTeacher" Role="ProfileTeacher" Multiplicity="0..1" />
+          <End Type="Model.Open_Subjects" Role="Open_Subjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProfileTeacher">
+              <PropertyRef Name="Teacher_id" />
+            </Principal>
+            <Dependent Role="Open_Subjects">
+              <PropertyRef Name="Teacher_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Register_Subjects_Open_Subjects">
+          <End Type="Model.Open_Subjects" Role="Open_Subjects" Multiplicity="0..1" />
+          <End Type="Model.Register_Subjects" Role="Register_Subjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Open_Subjects">
+              <PropertyRef Name="Sub_id" />
+            </Principal>
+            <Dependent Role="Register_Subjects">
+              <PropertyRef Name="Sub_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileStudent_PreName">
+          <End Type="Model.PreName" Role="PreName" Multiplicity="0..1" />
+          <End Type="Model.ProfileStudent" Role="ProfileStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreName">
+              <PropertyRef Name="Pre_id" />
+            </Principal>
+            <Dependent Role="ProfileStudent">
+              <PropertyRef Name="Pre_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileTeacher_PreName">
+          <End Type="Model.PreName" Role="PreName" Multiplicity="0..1" />
+          <End Type="Model.ProfileTeacher" Role="ProfileTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreName">
+              <PropertyRef Name="Pre_id" />
+            </Principal>
+            <Dependent Role="ProfileTeacher">
+              <PropertyRef Name="Pre_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileStudent_User">
+          <End Type="Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="Model.ProfileStudent" Role="ProfileStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="ProfileStudent">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Register_Subjects_Open_Subjects1">
+          <End Type="Model.ProfileStudent" Role="ProfileStudent" Multiplicity="0..1" />
+          <End Type="Model.Register_Subjects" Role="Register_Subjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProfileStudent">
+              <PropertyRef Name="Stud_id" />
+            </Principal>
+            <Dependent Role="Register_Subjects">
+              <PropertyRef Name="Stud_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileTeacher_User">
+          <End Type="Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="Model.ProfileTeacher" Role="ProfileTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="ProfileTeacher">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Open_Subjects">
+            <EntityTypeMapping TypeName="Model.Open_Subjects">
+              <MappingFragment StoreEntitySet="Open_Subjects">
+                <ScalarProperty Name="Teacher_id" ColumnName="Teacher_id" />
+                <ScalarProperty Name="Sub_unit" ColumnName="Sub_unit" />
+                <ScalarProperty Name="Sub_Name" ColumnName="Sub_Name" />
+                <ScalarProperty Name="Sub_id" ColumnName="Sub_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreName">
+            <EntityTypeMapping TypeName="Model.PreName">
+              <MappingFragment StoreEntitySet="PreName">
+                <ScalarProperty Name="Pre_name" ColumnName="Pre_name" />
+                <ScalarProperty Name="Pre_id" ColumnName="Pre_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProfileStudent">
+            <EntityTypeMapping TypeName="Model.ProfileStudent">
+              <MappingFragment StoreEntitySet="ProfileStudent">
+                <ScalarProperty Name="Faculty" ColumnName="Faculty" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="Group_id" ColumnName="Group_id" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FristName" ColumnName="FristName" />
+                <ScalarProperty Name="Pre_Name" ColumnName="Pre_Name" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Stud_id" ColumnName="Stud_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProfileTeacher">
+            <EntityTypeMapping TypeName="Model.ProfileTeacher">
+              <MappingFragment StoreEntitySet="ProfileTeacher">
+                <ScalarProperty Name="Faculty" ColumnName="Faculty" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FristName" ColumnName="FristName" />
+                <ScalarProperty Name="Pre_Name" ColumnName="Pre_Name" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Teacher_id" ColumnName="Teacher_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Register_Subjects">
+            <EntityTypeMapping TypeName="Model.Register_Subjects">
+              <MappingFragment StoreEntitySet="Register_Subjects">
+                <ScalarProperty Name="Grad" ColumnName="Grad" />
+                <ScalarProperty Name="Sub_id" ColumnName="Sub_id" />
+                <ScalarProperty Name="Stud_id" ColumnName="Stud_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="Model.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Usertype" ColumnName="Usertype" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewOpenSub">
+            <EntityTypeMapping TypeName="Model.ViewOpenSub">
+              <MappingFragment StoreEntitySet="ViewOpenSub">
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FristName" ColumnName="FristName" />
+                <ScalarProperty Name="Sub_unit" ColumnName="Sub_unit" />
+                <ScalarProperty Name="Sub_Name" ColumnName="Sub_Name" />
+                <ScalarProperty Name="Sub_id" ColumnName="Sub_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewReport">
+            <EntityTypeMapping TypeName="Model.ViewReport">
+              <MappingFragment StoreEntitySet="ViewReport">
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FristName" ColumnName="FristName" />
+                <ScalarProperty Name="Grad" ColumnName="Grad" />
+                <ScalarProperty Name="Teacher_id" ColumnName="Teacher_id" />
+                <ScalarProperty Name="Sub_unit" ColumnName="Sub_unit" />
+                <ScalarProperty Name="Sub_Name" ColumnName="Sub_Name" />
+                <ScalarProperty Name="Sub_id" ColumnName="Sub_id" />
+                <ScalarProperty Name="Stud_id" ColumnName="Stud_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewStud">
+            <EntityTypeMapping TypeName="Model.ViewStud">
+              <MappingFragment StoreEntitySet="ViewStud">
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="Faculty" ColumnName="Faculty" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="Group_id" ColumnName="Group_id" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FristName" ColumnName="FristName" />
+                <ScalarProperty Name="Pre_Name" ColumnName="Pre_Name" />
+                <ScalarProperty Name="Stud_id" ColumnName="Stud_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewTeacher">
+            <EntityTypeMapping TypeName="Model.ViewTeacher">
+              <MappingFragment StoreEntitySet="ViewTeacher">
+                <ScalarProperty Name="Pre_name" ColumnName="Pre_name" />
+                <ScalarProperty Name="Faculty" ColumnName="Faculty" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FristName" ColumnName="FristName" />
+                <ScalarProperty Name="Teacher_id" ColumnName="Teacher_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

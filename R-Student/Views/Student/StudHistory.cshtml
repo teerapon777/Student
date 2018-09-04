@@ -1,0 +1,83 @@
+﻿@model R_Student.Entity.ProfileStudent
+
+@{
+    ViewBag.Title = "StudHistory";
+    Layout = "~/Views/Shared/_Layout _User.cshtml";
+}
+
+<h2>StudHistory</h2>
+
+<div>
+    <h4>ProfileStudent</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Stud_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stud_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User_id)
+        </dt>
+
+        <dd>
+            @Model.User.Username
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pre_Name)
+        </dt>
+
+        <dd>
+            @Model.PreName.Pre_name
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FristName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FristName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Group_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Group_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Branch)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Branch)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Faculty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Faculty)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.Stud_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

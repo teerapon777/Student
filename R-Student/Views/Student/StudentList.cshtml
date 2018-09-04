@@ -1,0 +1,77 @@
+﻿@model IEnumerable<R_Student.Entity.ProfileStudent>
+
+@{
+    ViewBag.Title = "StudentList";
+    Layout = "~/Views/Shared/_Layout _User.cshtml";
+}
+
+<h2>StudentList</h2>
+
+<p>
+    @Html.ActionLink("Report", "WebForm1.aspx", "Report")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Stud_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FristName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Group_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Branch)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Faculty)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stud_id)
+        </td>
+
+        <td>
+            @item.PreName.Pre_name @Html.DisplayFor(modelItem => item.FristName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Group_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Branch)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Faculty)
+        </td>
+        <td>
+            @if (Session["USER"] != null)
+            {
+                R_Student.Entity.User user = (R_Student.Entity.User)Session["USER"];
+                if (user.Usertype == 1)
+                {
+                    @Html.ActionLink("Edit | ", "EditStud", new { id = item.Stud_id }); 
+                    @Html.ActionLink("Details | ", "Details", new { id = item.Stud_id });  
+                    <a href = "@Url.Action("Delete", new { id = item.Stud_id }) "
+                    onclick = "return confirm('คุณต้องการลบข้อมูลหรือไม่ ?')" > Delete </a>
+                }
+                else
+                {
+                    @Html.ActionLink("Details", "Details", new { id = item.Stud_id });
+                }
+            }
+        </td>
+    </tr>
+}
+
+</table>

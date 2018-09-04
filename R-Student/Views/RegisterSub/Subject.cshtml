@@ -1,0 +1,35 @@
+﻿@model IEnumerable<R_Student.Entity.Open_Subjects>
+
+@{
+    ViewBag.Title = "Subject";
+    Layout = "~/Views/Shared/_Layout _User.cshtml";
+}
+
+<h2>Subject</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Sub_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sub_Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sub_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sub_Name)
+        </td>
+        <td>
+            @Html.ActionLink("เปิดดู", "Classroom", new {  subid=item.Sub_id }) 
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<R_Student.Entity.Open_Subjects>
+
+@{
+    ViewBag.Title = "SubList";
+    Layout = "~/Views/Shared/_Layout _User.cshtml";
+}
+
+<h2>SubList</h2>
+
+<p>@Html.ActionLink("Report", "WebForm4.aspx", "Report")</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Sub_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sub_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sub_unit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Teacher_id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sub_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sub_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sub_unit)
+        </td>
+        <td>
+            @item.ProfileTeacher.FristName @item.ProfileTeacher.LastName
+        </td>
+        <td>         
+            @Html.ActionLink("รายละเอียด", "Details", new {  id=item.Sub_id }) 
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Open_Subjects">
+    <Key>
+      <PropertyRef Name="Sub_id" />
+    </Key>
+    <Property Name="Sub_id" Type="int" Nullable="false" />
+    <Property Name="Sub_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Sub_unit" Type="int" />
+    <Property Name="Teacher_id" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="PreName">
+    <Key>
+      <PropertyRef Name="Pre_id" />
+    </Key>
+    <Property Name="Pre_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pre_name" Type="varchar" MaxLength="7" />
+  </EntityType>
+  <EntityType Name="ProfileStudent">
+    <Key>
+      <PropertyRef Name="Stud_id" />
+    </Key>
+    <Property Name="Stud_id" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="User_id" Type="int" />
+    <Property Name="Pre_Name" Type="int" />
+    <Property Name="FristName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="Group_id" Type="varchar" MaxLength="9" />
+    <Property Name="Branch" Type="varchar" MaxLength="50" />
+    <Property Name="Faculty" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ProfileTeacher">
+    <Key>
+      <PropertyRef Name="Teacher_id" />
+    </Key>
+    <Property Name="Teacher_id" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="User_id" Type="int" />
+    <Property Name="Pre_Name" Type="int" />
+    <Property Name="FristName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="Branch" Type="varchar" MaxLength="50" />
+    <Property Name="Faculty" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Register_Subjects">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Stud_id" Type="varchar" MaxLength="11" />
+    <Property Name="Sub_id" Type="int" />
+    <Property Name="Grad" Type="char" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="User_id" />
+    </Key>
+    <Property Name="User_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="20" />
+    <Property Name="Password" Type="varchar" MaxLength="20" />
+    <Property Name="Name" Type="varchar" MaxLength="30" />
+    <Property Name="Image" Type="text" />
+    <Property Name="Usertype" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'R-Student.dbo.ViewOpenSub' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ViewOpenSub">
+    <Key>
+      <PropertyRef Name="Sub_id" />
+    </Key>
+    <Property Name="Sub_id" Type="int" Nullable="false" />
+    <Property Name="Sub_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Sub_unit" Type="int" />
+    <Property Name="FristName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'R-Student.dbo.ViewReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ViewReport">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="Stud_id" Type="varchar" MaxLength="11" />
+    <Property Name="Sub_id" Type="int" />
+    <Property Name="Sub_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Sub_unit" Type="int" />
+    <Property Name="Teacher_id" Type="varchar" MaxLength="15" />
+    <Property Name="Grad" Type="char" MaxLength="2" />
+    <Property Name="FristName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'R-Student.dbo.ViewStud' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ViewStud">
+    <Key>
+      <PropertyRef Name="Stud_id" />
+    </Key>
+    <Property Name="Stud_id" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="Pre_Name" Type="int" />
+    <Property Name="FristName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="Group_id" Type="varchar" MaxLength="9" />
+    <Property Name="Branch" Type="varchar" MaxLength="50" />
+    <Property Name="Faculty" Type="varchar" MaxLength="50" />
+    <Property Name="Expr1" Type="varchar" MaxLength="7" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'R-Student.dbo.ViewTeacher' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ViewTeacher">
+    <Key>
+      <PropertyRef Name="Teacher_id" />
+    </Key>
+    <Property Name="Teacher_id" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="FristName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="Branch" Type="varchar" MaxLength="50" />
+    <Property Name="Faculty" Type="varchar" MaxLength="50" />
+    <Property Name="Pre_name" Type="varchar" MaxLength="7" />
+  </EntityType>
+  <Association Name="FK_Open_Subjects_Open_Subjects">
+    <End Role="ProfileTeacher" Type="Self.ProfileTeacher" Multiplicity="0..1" />
+    <End Role="Open_Subjects" Type="Self.Open_Subjects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProfileTeacher">
+        <PropertyRef Name="Teacher_id" />
+      </Principal>
+      <Dependent Role="Open_Subjects">
+        <PropertyRef Name="Teacher_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfileStudent_PreName">
+    <End Role="PreName" Type="Self.PreName" Multiplicity="0..1" />
+    <End Role="ProfileStudent" Type="Self.ProfileStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PreName">
+        <PropertyRef Name="Pre_id" />
+      </Principal>
+      <Dependent Role="ProfileStudent">
+        <PropertyRef Name="Pre_Name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfileStudent_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="ProfileStudent" Type="Self.ProfileStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_id" />
+      </Principal>
+      <Dependent Role="ProfileStudent">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfileTeacher_PreName">
+    <End Role="PreName" Type="Self.PreName" Multiplicity="0..1" />
+    <End Role="ProfileTeacher" Type="Self.ProfileTeacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PreName">
+        <PropertyRef Name="Pre_id" />
+      </Principal>
+      <Dependent Role="ProfileTeacher">
+        <PropertyRef Name="Pre_Name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfileTeacher_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="ProfileTeacher" Type="Self.ProfileTeacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_id" />
+      </Principal>
+      <Dependent Role="ProfileTeacher">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Register_Subjects_Open_Subjects">
+    <End Role="Open_Subjects" Type="Self.Open_Subjects" Multiplicity="0..1" />
+    <End Role="Register_Subjects" Type="Self.Register_Subjects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Open_Subjects">
+        <PropertyRef Name="Sub_id" />
+      </Principal>
+      <Dependent Role="Register_Subjects">
+        <PropertyRef Name="Sub_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Register_Subjects_Open_Subjects1">
+    <End Role="ProfileStudent" Type="Self.ProfileStudent" Multiplicity="0..1" />
+    <End Role="Register_Subjects" Type="Self.Register_Subjects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProfileStudent">
+        <PropertyRef Name="Stud_id" />
+      </Principal>
+      <Dependent Role="Register_Subjects">
+        <PropertyRef Name="Stud_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="Open_Subjects" EntityType="Self.Open_Subjects" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PreName" EntityType="Self.PreName" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProfileStudent" EntityType="Self.ProfileStudent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProfileTeacher" EntityType="Self.ProfileTeacher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Register_Subjects" EntityType="Self.Register_Subjects" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ViewOpenSub" EntityType="Self.ViewOpenSub" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ViewOpenSub].[Sub_id] AS [Sub_id], 
+    [ViewOpenSub].[Sub_Name] AS [Sub_Name], 
+    [ViewOpenSub].[Sub_unit] AS [Sub_unit], 
+    [ViewOpenSub].[FristName] AS [FristName], 
+    [ViewOpenSub].[LastName] AS [LastName]
+    FROM [dbo].[ViewOpenSub] AS [ViewOpenSub]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ViewReport" EntityType="Self.ViewReport" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ViewReport].[id] AS [id], 
+    [ViewReport].[Stud_id] AS [Stud_id], 
+    [ViewReport].[Sub_id] AS [Sub_id], 
+    [ViewReport].[Sub_Name] AS [Sub_Name], 
+    [ViewReport].[Sub_unit] AS [Sub_unit], 
+    [ViewReport].[Teacher_id] AS [Teacher_id], 
+    [ViewReport].[Grad] AS [Grad], 
+    [ViewReport].[FristName] AS [FristName], 
+    [ViewReport].[LastName] AS [LastName]
+    FROM [dbo].[ViewReport] AS [ViewReport]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ViewStud" EntityType="Self.ViewStud" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ViewStud].[Stud_id] AS [Stud_id], 
+    [ViewStud].[Pre_Name] AS [Pre_Name], 
+    [ViewStud].[FristName] AS [FristName], 
+    [ViewStud].[LastName] AS [LastName], 
+    [ViewStud].[Group_id] AS [Group_id], 
+    [ViewStud].[Branch] AS [Branch], 
+    [ViewStud].[Faculty] AS [Faculty], 
+    [ViewStud].[Expr1] AS [Expr1]
+    FROM [dbo].[ViewStud] AS [ViewStud]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ViewTeacher" EntityType="Self.ViewTeacher" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ViewTeacher].[Teacher_id] AS [Teacher_id], 
+    [ViewTeacher].[FristName] AS [FristName], 
+    [ViewTeacher].[LastName] AS [LastName], 
+    [ViewTeacher].[Branch] AS [Branch], 
+    [ViewTeacher].[Faculty] AS [Faculty], 
+    [ViewTeacher].[Pre_name] AS [Pre_name]
+    FROM [dbo].[ViewTeacher] AS [ViewTeacher]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Open_Subjects_Open_Subjects" Association="Self.FK_Open_Subjects_Open_Subjects">
+      <End Role="ProfileTeacher" EntitySet="ProfileTeacher" />
+      <End Role="Open_Subjects" EntitySet="Open_Subjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfileStudent_PreName" Association="Self.FK_ProfileStudent_PreName">
+      <End Role="PreName" EntitySet="PreName" />
+      <End Role="ProfileStudent" EntitySet="ProfileStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfileStudent_User" Association="Self.FK_ProfileStudent_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="ProfileStudent" EntitySet="ProfileStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfileTeacher_PreName" Association="Self.FK_ProfileTeacher_PreName">
+      <End Role="PreName" EntitySet="PreName" />
+      <End Role="ProfileTeacher" EntitySet="ProfileTeacher" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfileTeacher_User" Association="Self.FK_ProfileTeacher_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="ProfileTeacher" EntitySet="ProfileTeacher" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Register_Subjects_Open_Subjects" Association="Self.FK_Register_Subjects_Open_Subjects">
+      <End Role="Open_Subjects" EntitySet="Open_Subjects" />
+      <End Role="Register_Subjects" EntitySet="Register_Subjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Register_Subjects_Open_Subjects1" Association="Self.FK_Register_Subjects_Open_Subjects1">
+      <End Role="ProfileStudent" EntitySet="ProfileStudent" />
+      <End Role="Register_Subjects" EntitySet="Register_Subjects" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
